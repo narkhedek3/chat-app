@@ -40,6 +40,6 @@ app.get('/api/v1/messages', (req, res) => {
   res.status(200).json({ messages: messages });
 });
 
-http.listen(3000, () => {
- console.log('server is running on 3000');
+http.listen(process.env.PORT || 3000, () => {
+ console.log(`server is running on ${process.env.PORT} || 3000`);
 });
