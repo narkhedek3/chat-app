@@ -15,8 +15,11 @@ app.use(bodyParser.json());
 
 app.use(serveStatic(path.join(__dirname, '/dist/pg-chat')))
 app.use('*', (req, res) => {
-  res.setHeader("Content-Type", "application/json");
   res.sendFile(path.join(__dirname, '/dist/pg-chat/index.html'));
+});
+
+app.use('/api/*',(req, res, next) => {
+  res.setHeader("Content-Type", "application/json");
 });
 
 
