@@ -1,21 +1,79 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="bg-dark width-100 height-10 sticky-top make-left text-light p-2">
+  Anna's PG
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
-<router-outlet></router-outlet>
+<div class="container-fluid p-4">
+
+  <div class="row width-100">
+    <div class="col">
+      <label for="user">User</label>
+      <input id="user" type="text" class="form-control" [(ngModel)]="user" placeholder="enter your name..." />
+    </div>
+  </div>
+
+  <ng-container *ngIf="user; else enterUser">
+    <h1>messages..</h1>
+
+    <div style="min-height: 50vh;overflow-y: hidden;overflow-x: auto;">
+      <div class="row width-100 m-2" *ngFor="let message of messages">
+
+        <ng-container *ngIf="message.user === user; else friendMessage">
+          <div class="col">
+
+          </div>
+          <div class="col shadow border rounded chat-box p-2">
+            <div class="row">
+              <div class="col-8">
+                {{ message.message }}
+              </div>
+              <div class="col right-corner time-font">
+                {{ message.time }}
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #friendMessage>
+
+          <div class="col shadow border rounded friend-chat-box p-2">
+            <div class="row font-weight-bold">
+              <div class="col">
+                {{ message.user }}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-8">
+                {{ message.message }}
+              </div>
+              <div class="col right-corner time-font">
+                {{ message.time }}
+              </div>
+            </div>
+          </div>
+
+          <div class="col">
+
+          </div>
+        </ng-template>
+
+      </div>
+    </div>
+
+
+    <div class="fixed-bottom bg-dark text-light p-3 width-100 shadow-lg" style="position: relative;">
+      <div class="row width-100">
+        <div class="col-10">
+          <input class="form-control" [(ngModel)]="message" (keyup.enter)="sendMessage()" />
+        </div>
+        <div class="col-2">
+          <button class="btn-sm btn-outline-dark" (click)="sendMessage()">
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+
+</div>
