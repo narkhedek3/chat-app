@@ -14,7 +14,7 @@ export class SocketioService {
   constructor(public http: HttpClient) { }
 
   setupSocketConnection() {
-    this.socket = io(environment.SOCKET_ENDPOINT);
+    this.socket = io();
   }
 
   sendMessage(messageBody) {
