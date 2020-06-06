@@ -14,7 +14,7 @@
   <ng-container *ngIf="user; else enterUser">
     <h1>messages..</h1>
 
-    <div style="min-height: 50vh;overflow-y: hidden;overflow-x: auto;">
+    <div style="min-height: 30vh;overflow-y: hidden;overflow-x: auto;">
       <div class="row width-100 m-2" *ngFor="let message of messages">
 
         <ng-container *ngIf="message.user === user; else friendMessage">

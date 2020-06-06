@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server/index.js",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -31,6 +31,7 @@
     "ng-emoji-picker": "^6.0.1",
     "ng-emoji-picker-material": "^1.2.4",
     "rxjs": "~6.3.3",
+    "serve-static": "^1.14.1",
     "socket.io": "^2.3.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

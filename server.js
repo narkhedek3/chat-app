@@ -1,6 +1,7 @@
 
 const express = require('express');
 const app = express();
+const serveStatic = require('serve-static');
 const http = require('http').createServer(app);
 
 const path = require('path');
@@ -12,10 +13,10 @@ const messages = [];
 
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, '../dist/pg-chat')))
+app.use(serveStatic(path.join(__dirname, '/dist/pg-chat')))
 app.use('*', (req, res, next) => {
   res.setHeader("Content-Type", "application/json");
-  res.sendFile(path.join(__dirname, '../dist/pg-chat/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/pg-chat/index.html'));
   next();
 });
 
