@@ -13,7 +13,7 @@ const messages = [];
 app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../dist/pg-chat')))
-app.use('/*', (req, res, next) => {
+app.use('*', (req, res, next) => {
   res.setHeader("Content-Type", "application/json");
   res.sendFile(path.join(__dirname, '../dist/pg-chat/index.html'));
   next();
