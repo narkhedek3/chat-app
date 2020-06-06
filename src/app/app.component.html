@@ -1,5 +1,10 @@
-<div class="bg-dark width-100 height-10 sticky-top make-left text-light p-2">
-  KVN
+<div class="row bg-dark width-100 height-10 sticky-top text-light p-2">
+  <div class="col  make-left">
+    KVN
+  </div>
+  <div class="col right-corner">
+    <button class="btn-dark text-dark" (click)="deleteAllMessages()">clear</button>
+  </div>
 </div>
 
 <div class="container-fluid p-4">
@@ -7,57 +12,57 @@
   <div class="row width-100">
     <div class="col">
       <label for="user">User</label>
-      <input id="user" type="text" class="form-control" [(ngModel)]="user" placeholder="enter your name..." />
+      <input id="user" type="text" class="form-control" [(ngModel)]="user" placeholder="enter your name to send message..." />
     </div>
   </div>
 
-  <ng-container *ngIf="user; else enterUser">
-    <h1>messages..</h1>
 
-    <div class="row width-100 m-2" *ngFor="let message of messages">
+  <h1>messages..</h1>
 
-      <ng-container *ngIf="message.user === user; else friendMessage">
-        <div class="col">
+  <div class="row width-100 m-2" *ngFor="let message of messages">
 
-        </div>
-        <div class="col shadow border rounded chat-box p-2">
-          <div class="row">
-            <div class="col-8">
-              {{ message.message }}
-            </div>
-            <div class="col right-corner time-font">
-              {{ message.time }}
-            </div>
+    <ng-container *ngIf="message.user === user; else friendMessage">
+      <div class="col">
+
+      </div>
+      <div class="col shadow border rounded chat-box p-2">
+        <div class="row">
+          <div class="col-8">
+            {{ message.message }}
+          </div>
+          <div class="col right-corner time-font">
+            {{ message.time }}
           </div>
         </div>
-      </ng-container>
+      </div>
+    </ng-container>
 
-      <ng-template #friendMessage>
+    <ng-template #friendMessage>
 
-        <div class="col shadow border rounded friend-chat-box p-2">
-          <div class="row font-weight-bold">
-            <div class="col">
-              {{ message.user }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-8">
-              {{ message.message }}
-            </div>
-            <div class="col right-corner time-font">
-              {{ message.time }}
-            </div>
+      <div class="col shadow border rounded friend-chat-box p-2">
+        <div class="row font-weight-bold">
+          <div class="col">
+            {{ message.user }}
           </div>
         </div>
-
-        <div class="col">
-
+        <div class="row">
+          <div class="col-8">
+            {{ message.message }}
+          </div>
+          <div class="col right-corner time-font">
+            {{ message.time }}
+          </div>
         </div>
-      </ng-template>
+      </div>
 
-    </div>
+      <div class="col">
 
+      </div>
+    </ng-template>
 
+  </div>
+
+  <ng-container *ngIf="user">
     <div class="fixed-bottom bg-dark text-light p-3 width-100 shadow-lg">
       <div class="row width-100">
         <div class="col-10">

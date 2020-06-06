@@ -34,5 +34,10 @@ export class SocketioService {
     });
   }
 
+  deleteAllMessages() {
+   this.http.delete('/api/v1/messages')
+    .subscribe(data => {});
+  }
+
 
 }

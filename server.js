@@ -41,6 +41,11 @@ app.get('/api/v1/messages', (req, res) => {
   res.status(200).json({ messages: messages });
 });
 
+app.delete('/api/v1/messages', (req, res) => {
+  messages = [];
+  res.status(200).json({ messages: messages });
+});
+
 http.listen(process.env.PORT || 3000, () => {
  console.log(`server is running on ${process.env.PORT} || 3000`);
 });
