@@ -42,7 +42,8 @@ app.get('/api/v1/messages', (req, res) => {
 });
 
 app.delete('/api/v1/messages', (req, res) => {
-  messages = [];
+  while(messages.length)
+    messages.pop();
   res.status(200).json({ messages: messages });
 });
 

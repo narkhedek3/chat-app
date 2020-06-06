@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
   }
 
   deleteAllMessages() {
+    this.messages = [];
     this.socketioService.deleteAllMessages();
   }
 
