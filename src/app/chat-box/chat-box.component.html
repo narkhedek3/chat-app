@@ -1,0 +1,66 @@
+<div class="container-fluid width-100">
+
+  <div class="border row sticky-top shadow p-2 bg-secondary rounded">
+    <div class="col make-left">
+      <i class="fa fa-arrow-left mr-2" style="cursor: pointer;" (click)="router.navigateByUrl('home')"></i>
+      <h3 class="shadow-lg rounded text-light">
+        {{ friend }}
+      </h3>
+    </div>
+  </div>
+
+
+
+  <div class="mb-5 pb-5 pl-5 pr-5"> 
+
+    <div class="row" *ngFor="let message of messages">
+
+      <ng-container *ngIf="message.from === user; else friendMessage">
+        <div class="col">
+
+        </div>
+        <div class="col shadow border rounded chat-box p-2">
+          <div class="row">
+            <div class="col-8">
+              {{ message.message }}
+            </div>
+            <div class="col right-corner time-font">
+              {{ message.sentAt }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #friendMessage>
+
+        <div class="col shadow border rounded friend-chat-box p-2">
+          <div class="row">
+            <div class="col-8">
+              {{ message.message }}
+            </div>
+            <div class="col right-corner time-font">
+              {{ message.sentAt }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+
+        </div>
+      </ng-template>
+
+    </div>
+
+  </div>
+
+  <div class="fixed-bottom bg-dark text-light p-3 width-100 shadow-lg">
+    <div class="row width-100">
+      <div class="col-10">
+        <input class="form-control" [(ngModel)]="message" (keyup.enter)="sendMessage()" />
+      </div>
+      <div class="col-2">
+        <i class="fa fa-paper-plane" (click)="sendMessage()" style="cursor: pointer;" aria-hidden="true"></i>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,24 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SocketioService } from './socketio.service';
+import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EmojiPickerModule } from 'ng-emoji-picker';
+import { LoginRegisterComponent } from './login-register/login-register.component';
+import { HomeComponent } from './home/home.component';
+import { ChatBoxComponent } from './chat-box/chat-box.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginRegisterComponent,
+    HomeComponent,
+    ChatBoxComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    EmojiPickerModule
+    EmojiPickerModule,
+    ReactiveFormsModule
   ],
-  providers: [SocketioService],
+  providers: [SocketioService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,6 +17,18 @@
   justify-content: flex-start;
 }
 
+.make-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.make-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .friend-chat-box {
   color: black;
   background: grey;
@@ -37,4 +49,8 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
+}
+
+.friend-list {
+  height: 10vh;
 }

@@ -1,0 +1,19 @@
+<div class="container-fluid p-4 width-100">
+
+  <div class="row bg-light p-2">
+    <div class="col make-right">
+      <button class="btn btn-outline-dark" (click)="logout()">logout</button>
+    </div>
+  </div>
+
+  <ng-container *ngFor="let friend of friends" >
+    <ng-container *ngIf="friend.userId != userId ">
+      <div class="row width-100 border-dark shadow friend-list make-center m-1" (click)="chatBox(friend);">
+        <span>
+          {{ friend.name }}
+        </span>
+      </div>
+    </ng-container>
+  </ng-container>
+
+</div>
